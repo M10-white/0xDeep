@@ -1,0 +1,405 @@
+@font-face {
+  font-family: 'Chicago';
+  src: url('src/font/Chicago.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: "Lucida Grande", sans-serif;
+  }
+  
+  body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Chicago', 'Lucida Grande', sans-serif;
+  }
+
+  #wallpaper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  #top-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 24px;
+    background: #d8d8d8;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 13px;
+    z-index: 10;
+    border-bottom: 1px solid #aaa;
+  }
+
+  #apple-logo {
+    height: 14px;
+    margin-right: 10px;
+    margin-top: 2px;
+  }
+
+  .menu-item {
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  #clock {
+    margin-left: auto;
+  }
+
+  #desktop {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .desktop-icon {
+    text-align: center;
+    color: white;
+    width: 80px;
+    cursor: pointer;
+  }
+
+  .desktop-icon img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 5px;
+    filter: drop-shadow(1px 1px 2px black);
+  }
+
+  .desktop-icon span {
+    font-size: 11px;
+    color: white;
+    text-align: center;
+    word-break: break-word;
+    max-width: 80px;
+    display: block;
+    text-shadow: 1px 1px 2px black;
+  }
+
+  #dock {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #d0d0d0;
+    border-top: 2px solid #999;
+    border-right: 2px solid #999;
+    border-left: 2px solid #999;
+    display: flex;
+    gap: 10px;
+    padding: 10px 15px;
+    box-shadow: inset 0 1px 2px #fff;
+    z-index: 10;
+  }  
+
+  .dock-icon {
+    height: 48px;
+    width: auto;
+    cursor: pointer;
+  }
+
+  .dock-icon:hover {
+    transform: scale(1.3);
+  }
+
+  .dock-separator {
+    width: 2px;
+    background: linear-gradient(to bottom, #aaa, #333);
+    border-radius: 1px;
+    margin: 0 6px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #finder-window {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 720px;
+    height: 480px;  
+    background: #f0f0f0;
+    border: 1px solid #bbb;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    font-family: 'Chicago', 'Lucida Grande', sans-serif;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  
+  #finder-window.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  
+  .finder-header {
+    background: #d6d6d6;
+    padding: 6px 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #aaa;
+    cursor: move;
+  }
+
+  .finder-header button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .finder-content {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .file-entry {
+    margin: 6px 0;
+    cursor: pointer;
+  }
+
+  .file-entry:hover {
+    background: #cde;
+    padding-left: 5px;
+    border-radius: 3px;
+  }
+
+  .finder-body {
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    display: flex;
+    height: calc(100% - 30px);
+  }
+
+.finder-sidebar {
+  width: 150px;
+  background: #efefef;
+  padding: 10px;
+  font-size: 13px;
+  border-right: 1px solid #ccc;
+}
+
+.finder-sidebar ul {
+  list-style: none;
+}
+
+.finder-sidebar li {
+  margin: 6px 0;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.finder-sidebar li:hover,
+.finder-sidebar .selected {
+  background: #dcdcdc;
+}
+
+.finder-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.finder-toolbar {
+  background: #f0f0f0;
+  padding: 6px 10px;
+  border-bottom: 1px solid #d0d0d0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.finder-toolbar button {
+  background: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.finder-toolbar input {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.finder-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.finder-row {
+  display: flex;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.finder-row.header {
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+}
+
+.finder-row span {
+  flex: 1;
+}
+
+.finder-row .name { flex: 2; }
+.finder-row .modified,
+.finder-row .size,
+.finder-row .kind { flex: 1; }
+
+/* Style général des fenêtres */
+.window {
+  position: absolute;
+  top: 120px;
+  left: 120px;
+  width: 480px;
+  height: 300px;
+  background: #f4f4f4;
+  border: 1px solid #999;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.window-header {
+  background: #d6d6d6;
+  padding: 6px 12px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #aaa;
+  cursor: move;
+}
+
+.window-header button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.window-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  font-size: 14px;
+  padding: 0;
+}
+
+/* App Mail */
+.mail-sidebar {
+  width: 120px;
+  background: #eeeeee;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.mail-sidebar .folder {
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.mail-sidebar .folder:hover,
+.mail-sidebar .folder.selected {
+  background: #d0d0d0;
+}
+
+.mail-inbox {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.mail-message {
+  background: white;
+  padding: 8px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.mail-message:hover {
+  background: #f0f0f0;
+}
+
+/* Détail du mail */
+#mail-detail .window-content {
+  padding: 10px;
+  display: block;
+}
+
+#mail-detail h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+#mail-detail p {
+  font-size: 14px;
+}
+
+
+.window, #finder-window {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  position: absolute;
+}
+
+.window.visible, #finder-window.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.terminal {
+  background: #111;
+  color: #0f0;
+  font-family: monospace;
+}

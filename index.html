@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Desktop - 0x00</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top bar -->
+  <div id="top-bar">
+    <img src="src/img/apple.png" alt="Apple Logo" id="apple-logo">
+    <div class="menu-item" onclick="openFinder()">Finder</div>
+    <div class="menu-item">File</div>
+    <div class="menu-item">Edit</div>
+    <div class="menu-item">View</div>
+    <div class="menu-item">Go</div>
+    <div class="menu-item">Window</div>
+    <div class="menu-item">Help</div>
+    <div id="clock">Thu 7:25 AM</div>
+  </div>
+
+  <!-- Desktop background and icons -->
+  <div id="desktop">
+    <img src="src/img/wallpaper.jpg" id="wallpaper">
+    <div class="desktop-icon">
+      <img src="src/img/hard-driver.png" alt="HDD">
+      <span>62652077617463686564</span>
+    </div>
+    <div class="desktop-icon">
+      <img src="src/img/folder.png" alt="Folder">
+      <span>Desktop</span>
+    </div>
+  </div>
+
+  <!-- Dock -->
+  <div id="dock">
+    <img src="src/img/finder.png" class="dock-icon" title="Finder" onclick="openFinder()">
+    <img src="src/img/mail.png" class="dock-icon" title="Mail">
+    <img src="src/img/internet-explorer.png" class="dock-icon" title="Internet">
+    <div class="dock-separator"></div>
+    <img src="src/img/terminal.png" class="dock-icon" title="Terminal">
+    <img src="src/img/trash.png" class="dock-icon" title="Trash">
+  </div>
+
+  <!-- Finder window -->
+  <div id="finder-window" class="hidden">
+    <div class="finder-header">
+      <span><img src="src/img/finder.png" style="height: 14px; vertical-align: middle; margin-right: 6px;">Finder</span>
+      <button onclick="closeFinder()">✕</button>
+    </div>
+    <div class="finder-body">
+      <div class="finder-sidebar">
+        <ul>
+          <li>📁 All My Files</li>
+          <li>☁️ iCloud Drive</li>
+          <li class="selected">📂 Applications</li>
+          <li>📂 Desktop</li>
+          <li>📂 Documents</li>
+          <li>📂 Downloads</li>
+          <li>📂 Pictures</li>
+          <li>🎵 Music</li>
+          <li>🎬 Movies</li>
+        </ul>
+      </div>
+      <div class="finder-main">
+        <div class="finder-toolbar">
+          <button>⬅</button>
+          <span>Applications</span>
+          <input type="text" placeholder="Search" />
+        </div>
+        <div class="finder-list">
+          <div class="finder-row header">
+            <span class="name">Name</span>
+            <span class="modified">Date Modified</span>
+            <span class="size">Size</span>
+            <span class="kind">Kind</span>
+          </div>
+          <div class="finder-row"><span class="name">App Store</span><span class="modified">Dec 17, 2016</span><span class="size">2.3 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">iTunes</span><span class="modified">Dec 17, 2016</span><span class="size">282 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Dictionary</span><span class="modified">Dec 17, 2016</span><span class="size">10.6 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">FaceTime</span><span class="modified">Dec 17, 2016</span><span class="size">5.5 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Font Book</span><span class="modified">Dec 17, 2016</span><span class="size">14.6 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">GarageBand</span><span class="modified">Dec 17, 2016</span><span class="size">1.2 GB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">iMovie</span><span class="modified">Dec 17, 2016</span><span class="size">891 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Keynote</span><span class="modified">Dec 17, 2016</span><span class="size">638 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Launchpad</span><span class="modified">Dec 17, 2016</span><span class="size">1.3 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Mail</span><span class="modified">Dec 17, 2016</span><span class="size">38.9 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Messages</span><span class="modified">Dec 17, 2016</span><span class="size">18.4 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Pages</span><span class="modified">Dec 17, 2016</span><span class="size">549 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Photos</span><span class="modified">Dec 17, 2016</span><span class="size">72.5 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Preview</span><span class="modified">Dec 17, 2016</span><span class="size">23.8 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">QuickTime Player</span><span class="modified">Dec 17, 2016</span><span class="size">18.1 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Safari</span><span class="modified">Dec 17, 2016</span><span class="size">21.5 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">System Preferences</span><span class="modified">Dec 17, 2016</span><span class="size">13.2 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">TextEdit</span><span class="modified">Dec 17, 2016</span><span class="size">5.8 MB</span><span class="kind">Application</span></div>
+          <div class="finder-row"><span class="name">Time Machine</span><span class="modified">Dec 17, 2016</span><span class="size">6.4 MB</span><span class="kind">Application</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Mail App -->
+<div id="mail-window" class="window hidden">
+  <div class="window-header">
+    <span>📧 Mail</span>
+    <button onclick="closeWindow('mail-window')">✕</button>
+  </div>
+  <div class="window-content">
+    <div class="mail-sidebar">
+      <div class="folder selected">📥 Inbox</div>
+      <div class="folder">📤 Sent</div>
+      <div class="folder">🗑️ Trash</div>
+    </div>
+    <div class="mail-inbox">
+      <div class="mail-message" onclick="showMail(0)">
+        <h4>De : pierre.dupont@exemple.com</h4>
+        <p>Sujet : T'as retrouvé ce vieux PC ?</p>
+      </div>
+      <div class="mail-message" onclick="showMail(1)">
+        <h4>De : system@root.local</h4>
+        <p>Sujet : 📌 Session non terminée le 03/06/2024</p>
+      </div>
+    </div>    
+  </div>
+</div>
+
+<!-- Mail Detail Popup -->
+<div id="mail-detail" class="window hidden">
+  <div class="window-header">
+    <span>📧 Lecture du mail</span>
+    <button onclick="closeWindow('mail-detail')">✕</button>
+  </div>
+  <div class="window-content">
+    <h4 id="mail-detail-subject">Sujet</h4>
+    <p id="mail-detail-body">Contenu...</p>
+  </div>
+  
+  </div>
+  
+</div>
+
+  <!-- Internet App -->
+  <div id="internet-window" class="window hidden">
+    <div class="window-header">
+      <span>🌐 Internet</span>
+      <button onclick="closeWindow('internet-window')">✕</button>
+    </div>
+    <div class="window-content">
+      <input type="text" placeholder="Rechercher..." style="width: 100%; margin-bottom: 10px;">
+      <p>Ce navigateur ne semble pas avoir de connexion...</p>
+    </div>
+  </div>
+
+  <!-- Terminal -->
+  <div id="terminal-window" class="window hidden">
+    <div class="window-header">
+      <span>💻 Terminal</span>
+      <button onclick="closeWindow('terminal-window')">✕</button>
+    </div>
+    <div class="window-content terminal">
+      <pre>> user@macOS ~ % echo "Hello, world!"
+  Hello, world!</pre>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
